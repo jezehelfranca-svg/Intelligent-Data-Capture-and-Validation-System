@@ -49,7 +49,11 @@ An unvalidated profile may be used to generate review candidates, but it must no
 
 ## OCR
 
-OCR is not implemented in the first executable foundation. `analyze_pdf()` explicitly reports `ocr_required=true` for PDFs with no native text. A future OCR provider must preserve coordinates, provider/version metadata, confidence, and human-review status.
+Page-level OCR routing is implemented through a provider interface. The first provider is local Tesseract CLI. Mixed PDFs are processed page-by-page: native-text pages remain native extraction, while scanned pages use OCR.
+
+OCR output preserves provider/version metadata, OCR confidence, render DPI, source page, and PDF-space bounding boxes. OCR results remain review-required evidence. If OCR is needed and no provider is available, extraction fails explicitly instead of silently returning blank data.
+
+See [OCR Processing](OCR.md).
 
 ## Confidentiality
 

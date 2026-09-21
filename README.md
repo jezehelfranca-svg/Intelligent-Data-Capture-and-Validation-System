@@ -357,7 +357,7 @@ A generated or modified version becomes the new master only after local validati
 
 The repository now includes a first executable ingestion foundation in addition to the product architecture. Implemented scope is deliberately narrow: immutable source identity/hashing, native-PDF text and coordinate extraction, structured workbook inspection, draft coordinate profiles, and a versioned telecom interchange bundle.
 
-OCR, semantic AI extraction, database persistence, FastAPI services, React review UI, authentication, and production deployment are still roadmap items.
+Semantic AI extraction, database persistence, FastAPI services, React review UI, authentication, and production deployment are still roadmap items. Local OCR routing is now implemented through a pluggable provider interface with Tesseract CLI as the first provider.
 
 Use the implementation status labels below in issues and pull requests:
 
@@ -408,10 +408,15 @@ The first executable release adds:
 
 - SHA-256 source identity and immutable-copy storage behavior.
 - Safe source filenames and source-document manifests.
-- Native PDF analysis, text-block extraction, and coordinate-region extraction using PyMuPDF.
+- Native PDF analysis, text-block extraction, coordinate-region extraction, and page-level native/OCR routing using PyMuPDF.
 - Excel/workbook structure and cell ingestion using openpyxl while retaining raw values, formulas, cached values, cell types, and number formats.
 - Versioned document-profile validation and deterministic coordinate-based field extraction.
 - A stable `engiverify.telecom.v1` interchange bundle for downstream engineering systems.
 - JSON Schemas, synthetic tests, and GitHub Actions CI.
 
 The telecom integration boundary is documented in [docs/TELECOM_INTEGRATION.md](docs/TELECOM_INTEGRATION.md).
+
+
+### OCR status
+
+EngiVerify 0.2.0 adds mixed-PDF OCR routing and a local Tesseract CLI provider. OCR is optional at runtime: if a scanned page is encountered without an available provider, processing stops with an explicit error. OCR coordinates, engine metadata, confidence, and source page are preserved in the same `engiverify.telecom.v1` bundle used for native PDF evidence.
