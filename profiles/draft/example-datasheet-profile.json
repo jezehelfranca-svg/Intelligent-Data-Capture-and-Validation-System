@@ -1,0 +1,33 @@
+{
+  "profile_id": "PROFILE-SYN-DATASHEET-001",
+  "name": "Synthetic single-page datasheet example",
+  "version": "0.1.0",
+  "document_type": "vendor_datasheet",
+  "status": "DRAFT",
+  "fields": [
+    {
+      "field_name": "model",
+      "page_number": 1,
+      "bbox": [
+        60,
+        45,
+        280,
+        85
+      ],
+      "data_type": "string",
+      "unit": null
+    },
+    {
+      "field_name": "ip_rating",
+      "page_number": 1,
+      "bbox": [
+        60,
+        85,
+        280,
+        125
+      ],
+      "data_type": "string",
+      "unit": null
+    }
+  ]
+}

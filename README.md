@@ -355,7 +355,9 @@ A generated or modified version becomes the new master only after local validati
 
 ## Development Status
 
-This repository documentation defines the intended product architecture and delivery controls. It does not claim that every described feature is already implemented or validated.
+The repository now includes a first executable ingestion foundation in addition to the product architecture. Implemented scope is deliberately narrow: immutable source identity/hashing, native-PDF text and coordinate extraction, structured workbook inspection, draft coordinate profiles, and a versioned telecom interchange bundle.
+
+OCR, semantic AI extraction, database persistence, FastAPI services, React review UI, authentication, and production deployment are still roadmap items.
 
 Use the implementation status labels below in issues and pull requests:
 
@@ -398,3 +400,18 @@ All contributions must:
 ## License
 
 No license has been selected in this initial repository specification. Add an approved license before external distribution or third-party reuse.
+
+
+## Implemented Ingestion Foundation
+
+The first executable release adds:
+
+- SHA-256 source identity and immutable-copy storage behavior.
+- Safe source filenames and source-document manifests.
+- Native PDF analysis, text-block extraction, and coordinate-region extraction using PyMuPDF.
+- Excel/workbook structure and cell ingestion using openpyxl while retaining raw values, formulas, cached values, cell types, and number formats.
+- Versioned document-profile validation and deterministic coordinate-based field extraction.
+- A stable `engiverify.telecom.v1` interchange bundle for downstream engineering systems.
+- JSON Schemas, synthetic tests, and GitHub Actions CI.
+
+The telecom integration boundary is documented in [docs/TELECOM_INTEGRATION.md](docs/TELECOM_INTEGRATION.md).
