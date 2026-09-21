@@ -132,6 +132,33 @@
               "string",
               "null"
             ]
+          },
+          "ocr_provider": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ocr_engine_version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ocr_confidence": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0,
+            "maximum": 1
+          },
+          "render_dpi": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 72
           }
         }
       }
